@@ -11,6 +11,7 @@ import configureStore from './src/store/configureStore';
 import { name as appName } from './app.json';
 
 const store = configureStore();
+console.disableYellowBox = true; 
 
 const RNRedux = () => (
   <Provider store={store}>

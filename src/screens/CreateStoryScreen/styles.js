@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'black',
     },
     preview: {
-      flex: 1,
+      flex: 4,
       justifyContent: 'flex-end',
       alignItems: 'center',
     },
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
       padding: 15,
       paddingHorizontal: 20,
       alignSelf: 'center',
-      margin: 20,
+      margin: 10,
     },
   });
 
