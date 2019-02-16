@@ -37,6 +37,11 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Agree Story to use camera</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Agree to save the photos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
