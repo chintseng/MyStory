@@ -36,7 +36,7 @@ export default class App extends Component {
         }}
       />
       <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
-        <TouchableOpacity onPress={this.takePicture.bind(this)} style={styles.capture}>
+        <TouchableOpacity onPress={this.takePicture} style={styles.capture}>
           <Text style={{ fontSize: 14 }}> SNAP </Text>
         </TouchableOpacity>
       </View>
