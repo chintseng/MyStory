@@ -10,9 +10,15 @@ const AppStack = createStackNavigator({
   initialRouteName: 'HomeScreen',
 });
 
+const CreateStoryStack = createStackNavigator({
+  CreateStoryScreen: {
+    screen: CreateStoryScreen,
+  },
+});
+
 const ModalStack = createStackNavigator({
   AppStack,
-  CreateStoryScreen,
+  CreateStoryStack,
 }, {
   mode: 'modal',
   headerMode: 'none',

@@ -4,7 +4,6 @@ import { Icon } from 'react-native-elements';
 
 class HomeScreen extends React.PureComponent {
   static navigationOptions = ({ navigation }) => {
-    const onCameraClick = navigation.getParam('onCameraClick');
     return {
       title: 'Shipment List',
       headerStyle: {
