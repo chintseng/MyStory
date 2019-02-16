@@ -1,11 +1,22 @@
-import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './HomeScreen';
+import CreateStoryScreen from './CreateStoryScreen';
 
 const AppStack = createStackNavigator({
   HomeScreen: {
     screen: HomeScreen,
   },
-}, { initialRouteName: 'HomeScreen' });
+}, {
+  initialRouteName: 'HomeScreen',
+});
 
-export default createAppContainer(AppStack);
+const ModalStack = createStackNavigator({
+  AppStack,
+  CreateStoryScreen,
+}, {
+  mode: 'modal',
+  headerMode: 'none',
+});
+
+export default createAppContainer(ModalStack);
 
