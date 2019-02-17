@@ -27,14 +27,16 @@ class StoryCard extends React.PureComponent {
   //   console.log('hie');
   // }
   render() {
+    const { story } = this.props;
     return (
       <TouchableOpacity onPress={this.props.onPress}>
         <Card
-          title={this.props.story.title}
+          title={story.title}
           borderRadius={20}
-          image={themePark}
+          image={story.mock ? themePark : { uri: story.images[0].uri }}
           imageStyle={{
             width: '100%',
+            height: 250,
           }}
           wrapperStyle={{
             padding: 0,

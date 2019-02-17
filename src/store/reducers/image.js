@@ -1,4 +1,4 @@
-import { IMAGE_NEW_IMAGE } from '../actionTypes';
+import { IMAGE_NEW_IMAGE, IMAGE_RESET } from '../actionTypes';
 
 const initialState = {
   data: [],
@@ -10,6 +10,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: [...state.data, action.imageData],
+      };
+    case IMAGE_RESET:
+      return {
+        ...state,
+        data: [],
       };
     default:
       return state;

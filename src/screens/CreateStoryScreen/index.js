@@ -3,11 +3,11 @@ import { View, Text, TouchableOpacity, Button, Image } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { connect } from 'react-redux';
 import styles from './styles';
-import { addNewImage } from '../../store/actions/image';
+import { addNewImage, resetImage } from '../../store/actions/image';
 
 class CreateStoryScreen extends React.PureComponent {
   static navigationOptions = ({ navigation }) => {
-    // const onCameraClick = navigation.getParam('onCameraClick');
+    const onResetImages = navigation.state.params ? navigation.state.params.onResetImages : null;
     return {
       title: 'Camera',
       headerStyle: {
@@ -18,8 +18,11 @@ class CreateStoryScreen extends React.PureComponent {
       },
       headerLeft: (
         <Button
-          onPress={() => navigation.pop()}
-
+          onPress={() => {
+            onResetImages();
+            navigation.pop();
+          }
+        }
           title="Cancel"
           color="#000000"
           backgroundColor="rgba(1, 1, 1, 0)"
@@ -27,6 +30,10 @@ class CreateStoryScreen extends React.PureComponent {
       ),
     };
   };
+  constructor(props) {
+    super(props);
+    props.navigation.setParams({ onResetImages: props.onResetImages });
+  }
   takePicture = async () => {
     const { onAddNewImage, navigation } = this.props;
     if (this.camera) {
@@ -34,7 +41,7 @@ class CreateStoryScreen extends React.PureComponent {
       const data = await this.camera.takePictureAsync(options);
       console.log(data.uri);
       onAddNewImage(data);
-      if (this.props.images.length === 1) {
+      if (this.props.images.length === 3) {
         navigation.navigate('ReviewStoryScreen');
       }
     }
@@ -67,7 +74,7 @@ class CreateStoryScreen extends React.PureComponent {
                 }}
           >
             <TouchableOpacity onPress={this.takePicture} style={styles.capture}>
-                <Image source={require('../../images/shutter.png')} style={{height: 120, width: 120}}/>
+              <Image source={require('../../images/shutter.png')} style={{ height: 120, width: 120 }} />
             </TouchableOpacity>
           </View>
           <View style={{
@@ -93,6 +100,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddNewImage: imageData => (dispatch(addNewImage(imageData))),
+    onResetImages: () => dispatch(resetImage()),
   };
 };
 

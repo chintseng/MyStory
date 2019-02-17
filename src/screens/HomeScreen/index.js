@@ -3,6 +3,7 @@ import { View, FlatList, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import StoryCard from '../../components/StoryCard';
+import titleImage from '../../images/app_title.png';
 
 class HomeScreen extends React.PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -14,8 +15,8 @@ class HomeScreen extends React.PureComponent {
       },
       headerTitle: (
         <Image
-          source={require('../../images/title.png')}
-          style={{ width: 200, height: 50, marginTop: 16 }}
+          source={titleImage}
+          style={{ width: 160, height: 40, marginTop: 10 }}
         />
       ),
       headerRight: (<Icon
@@ -35,8 +36,7 @@ class HomeScreen extends React.PureComponent {
     console.log('camera');
   }
   handleCardClick = story => (event) => {
-    // console.log(story);
-    this.props.navigation.navigate('StoryScreen');
+    this.props.navigation.navigate('StoryScreen', { story });
   }
   render() {
     return (

@@ -3,7 +3,7 @@
 export default class Api {
   constructor() {
     // this.url = `https://hoz8cvhdb1.execute-api.us-east-1.amazonaws.com/${process.env.REACT_APP_ENV}`;
-    this.url = 'http://34.73.88.219:5000';
+    this.url = 'http://34.73.72.176:5000';
   }
 
   // get = async (endpoint: string, token: string, params: any) => {
@@ -22,7 +22,6 @@ export default class Api {
   // }
 
   post = async (endpoint: string, body: any) => {
-    console.log(body);
     const res = await fetch(`${this.url}${endpoint}`, {
       method: 'POST',
       body: JSON.stringify(body),

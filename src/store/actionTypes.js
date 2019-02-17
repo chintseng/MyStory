@@ -2,4 +2,7 @@ export const UI_START_LOADING = 'UI_START_LOADING';
 export const UI_STOP_LOADING = 'UI_STOP_LOADING';
 
 export const IMAGE_NEW_IMAGE = 'IMAGE_NEW_IMAGE';
+export const IMAGE_RESET = 'IMAGE_RESET';
+
+export const STORY_NEW_STORY = 'STORY_NEW_STORY';
 
