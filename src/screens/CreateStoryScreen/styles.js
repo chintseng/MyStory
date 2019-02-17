@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     capture: {
       flex: 0,
-      backgroundColor: '#fff',
+      backgroundColor: 'rgba(1,1,1,0)',
       borderRadius: 5,
       padding: 15,
       paddingHorizontal: 20,

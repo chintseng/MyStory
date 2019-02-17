@@ -3,7 +3,7 @@ import { Card } from 'react-native-elements';
 import { Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import themePark from '../../images/mock/theme-park.png';
+import themePark from '../../images/zoo.jpg';
 
 class StoryCard extends React.PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -28,14 +28,19 @@ class StoryCard extends React.PureComponent {
   // }
   render() {
     return (
-      <TouchableOpacity
-        onPress={this.props.onPress}
-      >
+      <TouchableOpacity onPress={this.props.onPress}>
         <Card
           title={this.props.story.title}
+          borderRadius={20}
           image={themePark}
           imageStyle={{
             width: '100%',
+          }}
+          wrapperStyle={{
+            padding: 0,
+          }}
+          containerStyle={{
+            overflow: 'hidden',
           }}
         />
       </TouchableOpacity>
