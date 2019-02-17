@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import StoryCard from '../../components/StoryCard';
@@ -9,8 +9,13 @@ class HomeScreen extends React.PureComponent {
     return {
       title: 'Stories',
       headerStyle: {
-        backgroundColor: '#fca17d',
+        backgroundColor: '#FF6B6B',
+        marginRight: 10,
       },
+      headerTitle: (
+        <Image source={require('../../images/title.png')}
+        style={{width: 200, height: 50, marginTop: 16}}/>
+      ),
       headerRight: (<Icon
         name="camera-alt"
         onPress={() => {

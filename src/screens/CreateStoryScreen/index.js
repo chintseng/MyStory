@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TouchableOpacity, Button, Image } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import { connect } from 'react-redux';
 import styles from './styles';
@@ -11,7 +11,7 @@ class CreateStoryScreen extends React.PureComponent {
     return {
       title: 'Camera',
       headerStyle: {
-        backgroundColor: '#fca17d',
+        backgroundColor: '#FF6B6B',
       },
       headerTitleStyle: {
         color: 'white',
@@ -34,7 +34,7 @@ class CreateStoryScreen extends React.PureComponent {
       const data = await this.camera.takePictureAsync(options);
       console.log(data.uri);
       onAddNewImage(data);
-      if (this.props.images.length === 3) {
+      if (this.props.images.length === 1) {
         navigation.navigate('ReviewStoryScreen');
       }
     }
@@ -56,18 +56,18 @@ class CreateStoryScreen extends React.PureComponent {
           }}
         />
         <View style={{
- flex: 2, flexDirection: 'row', justifyContent: 'center', backgroundColor: '#FCA17D',
-}}
+              flex: 2, flexDirection: 'row', justifyContent: 'center', backgroundColor: '#FF6B6B',
+              }}
         >
           <View style={{ flex: 1 }} />
           <View style={{
                 flex: 1,
                 flexDirection: 'column',
                 justifyContent: 'center',
-}}
+                }}
           >
             <TouchableOpacity onPress={this.takePicture} style={styles.capture}>
-              <Text style={{ fontSize: 14 }}> SNAP </Text>
+                <Image source={require('../../images/shutter.png')} style={{height: 120, width: 120}}/>
             </TouchableOpacity>
           </View>
           <View style={{
