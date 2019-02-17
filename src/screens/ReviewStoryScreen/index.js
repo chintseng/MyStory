@@ -4,6 +4,7 @@ import { SafeAreaView, View, Button as RNButton, KeyboardAvoidingView, Touchable
 import { connect } from 'react-redux';
 import { Input, Button } from 'react-native-elements';
 import styles from './styles';
+import { createStory } from '../../store/actions/story';
 
 class ReviewStoryScreen extends React.PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -39,7 +40,7 @@ class ReviewStoryScreen extends React.PureComponent {
     Keyboard.dismiss();
   }
 
-  handleInputChange = key => ({ target: { value } }) => {
+  handleInputChange = key => (value) => {
     this.setState(prevState => ({
       ...prevState,
       controls: {
@@ -47,9 +48,14 @@ class ReviewStoryScreen extends React.PureComponent {
         [key]: {
           ...prevState.controls[key],
           value,
+          valid: true,
         },
       },
     }));
+  }
+  handleSubmitClick = () => {
+    const { controls: { title: { value: title } } } = this.state;
+    this.props.onCreateStory(title);
   }
   render() {
     const { images } = this.props;
@@ -65,11 +71,12 @@ class ReviewStoryScreen extends React.PureComponent {
                 <Input
                   placeholder="Story Title"
                   style={{ marginVertical: 20, padding: 16 }}
-                  onChange={this.handleInputChange}
+                  onChangeText={this.handleInputChange('title')}
                 />
                 <Button
                   style={{ marginVertical: 20, padding: 16 }}
                   title="Sumit"
+                  onPress={this.handleSubmitClick}
                 />
               </View>
             </TouchableWithoutFeedback>
@@ -86,4 +93,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ReviewStoryScreen);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCreateStory: title => dispatch(createStory(title)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewStoryScreen);

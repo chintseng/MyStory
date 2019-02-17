@@ -1,30 +1,54 @@
 import React from 'react';
 import { Card } from 'react-native-elements';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import themePark from '../../images/mock/theme-park.png';
 
 class StoryCard extends React.PureComponent {
+  static navigationOptions = ({ navigation }) => {
+    const title = navigation.getParam('title');
+    return {
+      title,
+      headerStyle: {
+        backgroundColor: '#fca17d',
+      },
+      headerRight: (<Icon
+        name="camera-alt"
+        onPress={() => {
+          navigation.navigate('CreateStoryScreen');
+        }}
+        underlayColor="transparent"
+      />),
+    };
+  };
+  // componentDidMount() {
+  //   this.props.navigation.setParams({ title: this.props.story.title });
+  //   console.log('hie');
+  // }
   render() {
     return (
-      <Card
-        title={this.props.title}
-        image={themePark}
-        imageStyle={{
-          width: '100%',
-        }}
-      />
+      <TouchableOpacity
+        onPress={this.props.onPress}
+      >
+        <Card
+          title={this.props.story.title}
+          image={themePark}
+          imageStyle={{
+            width: '100%',
+          }}
+        />
+      </TouchableOpacity>
     );
   }
 }
 
 StoryCard.defaultProps = {
-  title: '',
+  story: {},
 };
 
 StoryCard.propTypes = {
-  title: PropTypes.string,
+  story: PropTypes.object,
 };
 
 export default StoryCard;

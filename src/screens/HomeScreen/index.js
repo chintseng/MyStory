@@ -27,13 +27,17 @@ class HomeScreen extends React.PureComponent {
   onCameraClick = () => {
     console.log('camera');
   }
+  handleCardClick = story => (event) => {
+    // console.log(story);
+    this.props.navigation.navigate('StoryScreen');
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
         <FlatList
           style={{ width: '100%' }}
           data={this.props.stories}
-          renderItem={({ item }) => <StoryCard key={item.key} title={item.title} />}
+          renderItem={({ item }) => <StoryCard key={item.key} story={item} onPress={this.handleCardClick(item)} />}
         />
         {/* {this.props.stories.map(story => <StoryCard key={uuid()} title={story.title} />)} */}
       </View>
